@@ -56,8 +56,16 @@ body {
   padding-left: 10px;
   background-color: white;
   margin-top: 20px;
-  padding: 2px;
+  padding: 30px;
   text-shadow: 1px 1px 1px rgb(71, 67, 67);
   box-shadow: 10px 10px 10px 10px #ee7e63;
   border-radius: 20px;
+  display: flex;
+}
+
+img{
+  height: 100px;
+  width: 150px;
+  margin-right: auto;
+  margin-left: 80%;
 }

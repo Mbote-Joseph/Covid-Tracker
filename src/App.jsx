@@ -11,6 +11,9 @@ function App() {
   const [deathCases, setDeathCases] = useState("");
   const [recoveredCases, setRecoveredCases] = useState("");
   const [userInput, setUserInput] = useState("");
+  const [countryInfo, setCountryInfo]= useState({})
+  const [flag, setFlag]= useState("")
+  const [image, setImage]= useState("")
 
 
   useEffect(()=>{
@@ -30,6 +33,8 @@ function App() {
     todayCases,
     todayDeaths,
     todayRecovered,
+    countryInfo,
+    flag,
   }) => {
     setCountry(country);
     setCases(cases);
@@ -38,6 +43,8 @@ function App() {
     setTodayCases(todayCases);
     setDeathCases(todayDeaths);
     setRecoveredCases(todayRecovered);
+    setCountryInfo(countryInfo);
+    setFlag(flag)
   };
 
 
@@ -51,6 +58,11 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
+        let image= data.countryInfo.flag;
+        setImage(image);
+        console.log(data);
+        console.log(image);
+        
       });
   };
 
@@ -63,12 +75,13 @@ function App() {
           {/* input county name */}
           <input onChange={handleSearch} placeholder="Enter Country Name" />
           <br />
-          <button type="submit">Search</button>
+          <button type="submit" >Search</button>
         </form>
       </div>
   
       {/* Showing the details of the country */}
       <div className="covidData__country__info">
+        <div>
         <p>Country Name : {country} </p>
   
         <p>Cases : {cases}</p>
@@ -82,6 +95,12 @@ function App() {
         <p>Deaths Today : {deathCases}</p>
   
         <p>Recovered Today : {recoveredCases}</p>
+        </div>
+        <div>
+        <img src={image} alt="_blank"/>
+        </div>
+        
+        
       </div>
     </div>
   );
