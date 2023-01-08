@@ -11,9 +11,10 @@ function App() {
   const [deathCases, setDeathCases] = useState("");
   const [recoveredCases, setRecoveredCases] = useState("");
   const [userInput, setUserInput] = useState("");
-  const [countryInfo, setCountryInfo]= useState({})
-  const [flag, setFlag]= useState("")
-  const [image, setImage]= useState("")
+  const [countryInfo, setCountryInfo]= useState({});
+  const [flag, setFlag]= useState("");
+  const [image, setImage]= useState("");
+  const [clicked, setClick] = useState(false)
 
 
   useEffect(()=>{
@@ -66,6 +67,13 @@ function App() {
       });
   };
 
+  // if(country){
+  //   setClick(clicked=>{
+  //     clicked = true
+  //   })
+  // }
+
+  // onClick={() => setClick((clicked) => !clicked)}
 
   return (
     <div className="covidData">
@@ -83,7 +91,7 @@ function App() {
       <div className="covidData__country__info">
         <div>
         <p>Country Name : {country} </p>
-  
+        
         <p>Cases : {cases}</p>
   
         <p>Deaths : {deaths}</p>
@@ -97,7 +105,12 @@ function App() {
         <p>Recovered Today : {recoveredCases}</p>
         </div>
         <div>
-        <img src={image} alt="_blank"/>
+        {
+          image ?
+          <img src={image} alt="_blank"/> 
+          :
+          " "
+        }
         </div>
         
         
